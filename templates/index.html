@@ -8,6 +8,12 @@
 <body>
   <button id="toggleDarkMode">🌙 Dark Mode</button>
 
+  <select id="themeSelector">
+    <option value="default">Default</option>
+    <option value="resume">Resume</option>
+    <option value="article">Article</option>
+  </select>
+
   <div class="container">
     <div class="drop-zone" id="dropZone">
       <p>Drop your Markdown file here</p>
@@ -31,6 +37,7 @@
     const downloadBtn = document.getElementById("downloadBtn");
     const previewZone = document.getElementById("previewZone");
     const toggleBtn = document.getElementById("toggleDarkMode");
+    const themeSelector = document.getElementById("themeSelector");
 
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
@@ -62,6 +69,7 @@
 
       const formData = new FormData();
       formData.append("file", file);
+      formData.append("theme", themeSelector.value); // ✅ Send selected theme
 
       fetch("/upload/", {
         method: "POST",
