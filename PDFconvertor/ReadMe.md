@@ -19,6 +19,6 @@ Technologies
 
 1. Clone this repository to your local machine:
    ```bash
-   1.git clone https://github.com/Ermal-Mamaj/markdown2.git
-   2.cd markdown2/pdfconvertor
-   3.docker-compose up --build
+     git clone https://github.com/Ermal-Mamaj/markdown2.git
+     cd markdown2/pdfconvertor
+     docker-compose up --build
