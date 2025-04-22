@@ -1,0 +1,103 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60vh;
+  padding: 1rem;
+}
+
+.drop-zone,
+.output-zone {
+  width: 40%;
+  height: 300px;
+  background: white;
+  border: 2px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+  text-align: center;
+}
+
+
+.drop-zone.highlight {
+  border-color: #007bff;
+}
+
+
+.drop-zone.has-file {
+  border-color: #28a745;
+  background-color: rgba(40, 167, 69, 0.1);
+}
+.drop-zone.has-file p {
+  color: #28a745;
+  font-weight: bold;
+}
+
+body.dark-mode .drop-zone,
+body.dark-mode .output-zone,
+body.dark-mode .preview-zone {
+  background-color: #1e1e1e;
+  border-color: #444;
+  color: #e0e0e0;
+}
+body.dark-mode .drop-zone.has-file {
+  background-color: rgba(40, 167, 69, 0.2);
+}
+
+
+button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+#toggleDarkMode {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #fff;
+  border: none;
+}
+body.dark-mode button {
+  background-color: #333;
+  color: #fff;
+}
+body.dark-mode #toggleDarkMode {
+  background-color: #444;
+}
+
+.preview-container {
+  width: 90%;
+  margin: 2rem auto;
+}
+.preview-container h2 {
+  margin-bottom: 0.5rem;
+  font-family: sans-serif;
+}
+
+.preview-zone {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  min-height: 500px;      
+  overflow-y: auto;
+  font-family: monospace;
+  white-space: pre-wrap;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
