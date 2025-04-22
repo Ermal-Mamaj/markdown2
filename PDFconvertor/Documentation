@@ -1,0 +1,52 @@
+Markdown to PDF Converter Documentation
+
+  Overview
+
+The **Markdown to PDF Converter** is a web application that allows users to upload Markdown files, convert them to HTML, and then generate a PDF version of the content. The application also offers a customizable theme feature for the generated PDFs, allowing users to select between different styles such as "article" and "resume."
+
+The app is built using **FastAPI** for the backend and **WeasyPrint** for PDF generation. It is designed to be easy to deploy via **Docker**.
+
+  Features
+- **Upload Markdown files**: Allows users to drag and drop `.md` files to the app.
+- **PDF Generation**: Converts Markdown files to PDF using WeasyPrint.
+- **Customizable Themes**: Users can select themes for the PDF output (e.g., "article" or "resume").
+- **Frontend**: Simple and clean frontend with drag-and-drop functionality and a download button.
+- **Styling**: The app uses CSS to style both the HTML output and the generated PDF.
+- **Dockerized Application**: The app is packaged in Docker, making deployment easy and consistent across environments.
+
+
+  Technologies Used
+- **FastAPI**: A modern, fast (high-performance), web framework for building APIs with Python 3.7+.
+- **WeasyPrint**: A visual rendering engine for HTML and CSS that can output PDF documents.
+- **Docker**: A platform for developing, shipping, and running applications inside containers.
+- **CSS**: Used to style both the HTML response in the browser and the PDF output.
+
+
+ How It Works
+1. **Markdown File Upload**: The user uploads a Markdown file using the frontend interface.
+2. **Markdown to HTML Conversion**: The server converts the Markdown file to HTML format using Python's `markdown` module.
+3. **HTML to PDF**: The converted HTML is then processed into a PDF using the WeasyPrint library. The CSS for styling the PDF is dynamically chosen based on the selected theme.
+4. **Download the PDF**: Once the PDF is generated, the user can download it directly from the browser.
+
+
+ Backend Implementation
+- The FastAPI server handles the routing, file upload, and conversion logic.
+- The `html_to_pdf` function uses WeasyPrint to render the HTML content to a PDF with custom CSS styling.
+
+
+  Docker Setup
+- The app is containerized using Docker for consistent and easy deployment.
+- The Dockerfile sets up the environment, installs dependencies, and starts the FastAPI server.
+
+
+
+ Future Improvements:
+- Support for additional themes**: More PDF styles can be added based on user feedback.
+- Support for more file formats**: Enable conversion of other file formats to PDF (e.g., Word, HTML).
+
+
+---
+This documentation serves as an overview of the Markdown to PDF Converter app, describing how it works,the technologies used, and the current features.
+More details on how to deploy and use the app can be found below in the README section.
+
+
