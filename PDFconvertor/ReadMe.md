@@ -1,32 +1,24 @@
-# 📝 Markdown to PDF Converter
+# Markdown to PDF Converter
 
-This project is a simple **Markdown to PDF Converter** built using **FastAPI** for the backend and a drag-and-drop interface for the frontend. It allows users to upload or paste Markdown content, preview it, and download a clean, styled PDF file.
+This is a web application that allows you to upload a Markdown file, convert it to HTML, and then generate a PDF of the content with customizable themes. It is easy to use, and the app is fully containerized with Docker for consistent deployment.
 
----
+ Features
+- Upload a Markdown file to convert it to a styled PDF.
+- Choose between different PDF themes like "article" and "resume."
+- Simple drag-and-drop frontend interface.
+- PDF generated with WeasyPrint and styled with CSS.
 
-## Features
+Technologies
+- **Backend**: FastAPI
+- **PDF Generation**: WeasyPrint
+- **Styling**: CSS for HTML and PDF
+- **Containerization**: Docker
 
--  Drag-and-drop Markdown upload
--  Live Markdown-to-HTML rendering
--  One-click PDF export
--  Supports basic markdown elements:
-    - Headings, Lists, Links, Tables, Code blocks, Images, etc.
--  Powered by **WeasyPrint** and **Markdown** libraries
+     How to Use
+ Option 1: Clone from GitHub
 
----
-
-## Tech Stack
-
-- **Backend**: FastAPI, WeasyPrint, Markdown
-- **Frontend**: HTML/CSS + JS (vanilla)
-- **Containerized**: Docker + Docker Compose
-
----
-
-## Installation (Local Dev)
-
-1. Clone the repo:
-
-```bash
-git clone https://github.com/your-username/markdown2pdf.git
-cd markdown2pdf
+1. Clone this repository to your local machine:
+   ```bash
+   1.git clone https://github.com/Ermal-Mamaj/markdown2pdf.git
+   2.cd markdown-to-pdf
+   3.docker-compose up --build
