@@ -20,7 +20,7 @@ Technologies
 1. Clone this repository to your local machine:
    ```bash
      git clone https://github.com/Ermal-Mamaj/markdown2.git
-     cd markdown2/pdfconvertor
+     cd markdown2
      docker-compose up --build
 
   Option 2: Cloning from DockerHub:
