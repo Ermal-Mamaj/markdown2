@@ -1,19 +1,27 @@
 from markdown import markdown
-from weasyprint import HTML
+from weasyprint import HTML, CSS
 import os
+
+THEME_CSS_PATHS = {
+    "default": "utils/css/default.css",
+    "resume": "utils/css/resume.css",
+    "article": "utils/css/article.css"
+}
 
 def markdown_to_html(markdown_text: str) -> str:
     """Convert Markdown text to HTML."""
     return markdown(markdown_text, output_format='html5')
 
-def html_to_pdf(html_content: str, output_path: str) -> None:
+def html_to_pdf(html_content: str, output_path: str, theme: str = "default") -> None:
     """
-    Convert HTML content to PDF and save it to the specified output_path.
+    Convert HTML content to PDF with a selected theme.
     """
-    # Ensure the output directory exists
     output_dir = os.path.dirname(output_path)
-    if output_dir and not os.path.exists(output_dir):
-        os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
 
-    # Write the PDF
-    HTML(string=html_content).write_pdf(output_path)
+    css_path = 'static/style.css'
+    
+    HTML(string=html_content).write_pdf(
+        output_path,
+        stylesheets=[CSS(filename=css_path)]
+    )
