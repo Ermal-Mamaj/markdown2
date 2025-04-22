@@ -14,16 +14,17 @@ Technologies
 - **Styling**: CSS for HTML and PDF
 - **Containerization**: Docker
 
-     How to Use
- Option 1: Clone from GitHub
+  
+  *How to Use
 
+
+Option 1: Clone from GitHub
 1. Clone this repository to your local machine:
    ```bash
      git clone https://github.com/Ermal-Mamaj/markdown2.git
      cd markdown2
      docker-compose up --build
-
-  Option 2: Cloning from DockerHub:
+ Option 2: Cloning from DockerHub:
   ```bash
      docker pull ermalmamaj/markdown2pdf
      docker run -p 8000:8000 ermalmamaj/markdown2pdf:latest
