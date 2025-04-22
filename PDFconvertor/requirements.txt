@@ -1,6 +1,0 @@
-fastapi
-uvicorn
-python-multipart
-weasyprint
-markdown
-jinja2
