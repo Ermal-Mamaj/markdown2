@@ -38,7 +38,9 @@ The app is built using **FastAPI** for the backend and **WeasyPrint** for PDF ge
 - The app is containerized using Docker for consistent and easy deployment.
 - The Dockerfile sets up the environment, installs dependencies, and starts the FastAPI server.
 
-
+  Hosting on Render
+-The Markdown to PDF Converter app is also hosted on Render, a cloud platform that simplifies deployment.
+-The app is accessible online, allowing users to convert Markdown files to PDF without needing to set up the application locally.
 
  Future Improvements:
 - Support for additional themes**: More PDF styles can be added based on user feedback.
