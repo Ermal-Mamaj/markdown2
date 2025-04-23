@@ -28,7 +28,6 @@ async def upload_markdown(file: UploadFile = File(...), theme: str = Form("defau
     pdf_path = os.path.join("output", filename)
 
     html_to_pdf(html, pdf_path, theme)
-<<<<<<< HEAD
 
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -38,8 +37,6 @@ async def upload_markdown(file: UploadFile = File(...), theme: str = Form("defau
     )
     conn.commit()
     conn.close()
-=======
->>>>>>> 4e78445c831a36ceff37a4bf6143b42ef5a1f75b
 
     return JSONResponse({
         "download_url": f"/download/{filename}",
