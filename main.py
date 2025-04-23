@@ -6,7 +6,8 @@ import os
 import uuid
 
 from utils.converter import markdown_to_html, html_to_pdf
-from db import get_db_connection
+from db import get_db_connection, init_db  
+init_db()
 
 app = FastAPI()
 
