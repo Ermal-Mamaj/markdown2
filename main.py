@@ -4,7 +4,9 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import os
 import uuid
+
 from utils.converter import markdown_to_html, html_to_pdf
+from db import get_db_connection
 
 app = FastAPI()
 
@@ -27,6 +29,15 @@ async def upload_markdown(file: UploadFile = File(...), theme: str = Form("defau
 
     html_to_pdf(html, pdf_path, theme)
 
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO items (name, description) VALUES (?, ?)",
+        (filename, file.filename)
+    )
+    conn.commit()
+    conn.close()
+
     return JSONResponse({
         "download_url": f"/download/{filename}",
         "html": html
@@ -38,5 +49,15 @@ def download_pdf(filename: str):
     return FileResponse(
         path=file_path,
         media_type="application/pdf",
-        filename="converted.pdf"
+        filename=filename
     )
+
+@app.get("/history", response_class=HTMLResponse)
+def show_history(request: Request):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM items ORDER BY id DESC")
+    items = cursor.fetchall()
+    print("Fetched items:", items)
+    conn.close()
+    return templates.TemplateResponse("history.html", {"request": request, "items": items})

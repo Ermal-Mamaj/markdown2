@@ -4,23 +4,165 @@
   <meta charset="UTF-8" />
   <title>Markdown to PDF</title>
   <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    .button-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+    }
+
+    #toggleDarkMode {
+      font-size: 12px;
+      padding: 5px 10px;
+      background-color: #f0f0f0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      height: 30px;
+      width: 100px;
+      margin-bottom: 10px;
+    }
+
+    #historyBtn {
+      font-size: 14px;
+      padding: 8px 14px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      height: 40px;
+      width: 120px;
+    }
+
+    #toggleDarkMode:hover,
+    #historyBtn:hover {
+      background-color: #0056b3;
+    }
+
+    .container {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .control-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      margin: 40px auto;
+      max-width: 1000px;
+      gap: 20px;
+    }
+
+    .drop-zone {
+      flex: 1 1 40%;
+      min-height: 400px;
+      min-width: 500px;
+      border: 2px dashed #007BFF;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background-color: #e9ecef;
+      flex-direction: column;
+      margin-left: -70px;
+    }
+
+    .drop-zone p {
+      margin: 0;
+    }
+
+    .theme-selector {
+      flex: 1 1 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .theme-selector select {
+      font-size: 16px;
+      padding: 10px;
+      width: 140px;
+    }
+
+    .output-zone {
+      flex: 1 1 40%;
+      min-height: 400px;
+      min-width: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background-color: #e9ecef;
+    }
+
+    .output-zone button {
+      font-size: 16px;
+      padding: 10px 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 300px;
+    }
+
+    .preview-container {
+      margin-top: 40px;
+      text-align: left;
+      width: 90%;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+
+    .preview-zone {
+      border: 1px solid #ddd;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+  </style>
 </head>
 <body>
-  <button id="toggleDarkMode">🌙 Dark Mode</button>
-
-  <select id="themeSelector">
-    <option value="default">Default</option>
-    <option value="resume">Resume</option>
-    <option value="article">Article</option>
-  </select>
+  <div class="button-container">
+    <button id="toggleDarkMode">🌙 Dark Mode</button>
+    <button id="historyBtn">History</button>
+  </div>
 
   <div class="container">
-    <div class="drop-zone" id="dropZone">
-      <p>Drop your Markdown file here</p>
-      <input type="file" id="fileInput" accept=".md" hidden />
-    </div>
-    <div class="output-zone">
-      <button id="downloadBtn" disabled>Download PDF</button>
+    <div class="control-row">
+      <div class="drop-zone" id="dropZone">
+        <p>Drop your Markdown file here</p>
+        <input type="file" id="fileInput" accept=".md" hidden />
+      </div>
+
+      <div class="theme-selector">
+        <select id="themeSelector">
+          <option value="default">Default</option>
+          <option value="resume">Resume</option>
+          <option value="article">Article</option>
+        </select>
+      </div>
+
+      <div class="output-zone">
+        <button id="downloadBtn" disabled>Download PDF</button>
+      </div>
     </div>
   </div>
 
@@ -38,6 +180,7 @@
     const previewZone = document.getElementById("previewZone");
     const toggleBtn = document.getElementById("toggleDarkMode");
     const themeSelector = document.getElementById("themeSelector");
+    const historyBtn = document.getElementById("historyBtn");
 
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
@@ -69,7 +212,7 @@
 
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("theme", themeSelector.value); // ✅ Send selected theme
+      formData.append("theme", themeSelector.value);
 
       fetch("/upload/", {
         method: "POST",
@@ -93,6 +236,10 @@
           previewZone.innerHTML = "<em>No content yet</em>";
         });
     }
+
+    historyBtn.addEventListener("click", () => {
+      window.location.href = "/history";
+    });
   </script>
 </body>
 </html>
