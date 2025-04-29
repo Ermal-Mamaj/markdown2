@@ -11,7 +11,6 @@ body.dark-mode {
   color: #e0e0e0;
 }
 
-
 .container {
   display: flex;
   justify-content: space-around;
@@ -34,11 +33,9 @@ body.dark-mode {
   text-align: center;
 }
 
-
 .drop-zone.highlight {
   border-color: #007bff;
 }
-
 
 .drop-zone.has-file {
   border-color: #28a745;
@@ -59,7 +56,6 @@ body.dark-mode .preview-zone {
 body.dark-mode .drop-zone.has-file {
   background-color: rgba(40, 167, 69, 0.2);
 }
-
 
 button {
   padding: 1rem 2rem;
@@ -100,4 +96,29 @@ body.dark-mode #toggleDarkMode {
   font-family: monospace;
   white-space: pre-wrap;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+  font-family: sans-serif;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+body.dark-mode table,
+body.dark-mode th,
+body.dark-mode td {
+  border-color: #666;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
 }
