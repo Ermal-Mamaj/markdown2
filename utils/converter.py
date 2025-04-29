@@ -9,13 +9,14 @@ THEME_CSS_PATHS = {
 }
 
 def markdown_to_html(markdown_text: str) -> str:
-    """Convert Markdown text to HTML."""
-    return markdown(markdown_text, output_format='html5')
+    return markdown(
+        markdown_text, 
+        output_format='html5',
+        extensions=['extra', 'tables', 'toc']
+    )
 
 def html_to_pdf(html_content: str, output_path: str, theme: str = "default") -> None:
-    """
-    Convert HTML content to PDF with a selected theme.
-    """
+
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
 
